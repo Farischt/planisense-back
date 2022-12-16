@@ -10,7 +10,7 @@ services:
       ADMINER_DEFAULT_DB_DRIVER: pgsql
       ADMINER_DESIGN: pepa-linha
     ports:
-      - '5001:8080'
+      - '8080:8080'
     networks:
       - planisense
 
