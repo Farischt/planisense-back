@@ -9,9 +9,10 @@ async function bootstrap() {
   app.setGlobalPrefix('api')
   app.useGlobalInterceptors(new LoggingInterceptor())
   app.useGlobalFilters(new AllExceptionsFilter(app.get(HttpAdapterHost)))
+  app.enableCors()
   const prismaService = app.get(PrismaService)
   await prismaService.enableShutdownHooks(app)
-  await app.listen(3000)
+  await app.listen(8000)
 }
 
 bootstrap()

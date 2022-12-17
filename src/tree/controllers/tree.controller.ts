@@ -1,11 +1,11 @@
-import { Controller, Get, BadRequestException, Param, ParseIntPipe } from '@nestjs/common'
+import { Controller, Get, BadRequestException, Param, ParseIntPipe, Post } from '@nestjs/common'
 import { TreeService } from '../services/tree.service'
 
-@Controller('tree')
+@Controller('trees')
 export class TreeController {
   constructor(private readonly treeService: TreeService) {}
 
-  @Get('/generate/:numberOfTrees')
+  @Post('/generate/:numberOfTrees')
   public async createFromApi(@Param('numberOfTrees', ParseIntPipe) numberOfTrees: number) {
     if (numberOfTrees < 1) {
       throw new BadRequestException('numberOfTrees must be greater than 0')
@@ -21,7 +21,7 @@ export class TreeController {
     return await this.treeService.getAllAreas()
   }
 
-  @Get('/gender')
+  @Get('/genders')
   public async getAllGenders() {
     return await this.treeService.getAllGenders()
   }
