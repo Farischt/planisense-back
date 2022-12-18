@@ -35,11 +35,11 @@ export class TreeService {
    * Get all areas with number of trees
    * @returns areas with number of trees
    */
-  public async getAllAreas(): Promise<AreaWithCount[]> {
+  public async getAllAreas(paris: boolean): Promise<AreaWithCount[]> {
     return (await this.prismaService.tree.groupBy({
       where: {
         area: {
-          startsWith: 'PARIS',
+          contains: paris ? 'PARIS' : '',
         },
       },
       by: ['area'],
